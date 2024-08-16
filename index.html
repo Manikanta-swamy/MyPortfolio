@@ -580,12 +580,11 @@
                         </div>
                         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
-    <dotlottie-player class="project__img" src="https://lottie.host/9356ecb4-f0f5-421a-a3d6-d8452431eedf/xaNtDpU013.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+                        <dotlottie-player class="project__img" src="https://lottie.host/9356ecb4-f0f5-421a-a3d6-d8452431eedf/xaNtDpU013.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
                     </div>
                 </div>
             </section>
-
-            
+       
             <!--==================== CONTACT ME ====================-->
             <section class="contact section" id="contact">
                 <h2 class="section__title">Contact me</h2>
@@ -678,7 +677,7 @@
                         <a href="https://www.linkedin.com/in/manikanta-swamy-angara-941117299/" target="_blank"><i class="uil uil-linkedin-alt footer__social"></i></a>
                         <a href="https://github.com/Manikanta-swamy/"  target="_blank"><i class="uil uil-github-alt footer__social"></i></a>
                         <a href="mailto:angaramanikantaswamy@gmail.com" target="_blank"><i class="uil uil-envelope-alt footer__social"></i></a>
-                        <a href="" target="_blank"><i class="uil uil-whatsapp"></i></a>
+                        <!-- <a href="" target="_blank"><i class="uil uil-whatsapp"></i></a> -->
                     </div>
 
                 </div>
@@ -694,5 +693,26 @@
 
         <script src="./assets/js/swiper-bundle.min.js"></script>
         <script src="./assets/js/main.js"></script>
+        <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+        <script>
+
+        emailjs.init("EzosNKoTRTMqbicSY");
+
+        document.querySelector('.button.button--flex').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            var form = document.querySelector('.contact__form');
+            
+            emailjs.sendForm('service_lzvrql6', 'template_iy9vpm3', form)
+            .then(function(response) {
+                alert('Email sent successfully!');
+                console.log('Success:', response);
+            }, function(error) {
+                alert('Failed to send email.');
+                console.log('Error:', error);
+            });
+        });
+        </script>
+
     </body>
 </html>
