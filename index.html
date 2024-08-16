@@ -704,11 +704,11 @@
             event.preventDefault();
             let name = document.querySelector("#name").value;
             let mail = document.querySelector("#mail").value;
-            let msg = document.querySelector("#message").value;
+            let message = document.querySelector("#message").value;
 
             let namecheck = (name !== null ) && (name.length >=1)
             let mailcheck = (mail !== null ) && (mail.length >=1) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail);
-            let msgcheck = (msg !== null ) && (msg.length >=1)
+            let msgcheck = (message !== null ) && (message.length >=1)
 
             let form = document.querySelector("#contact-form");
             console.log(form);
