@@ -580,12 +580,11 @@
                         </div>
                         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
-    <dotlottie-player class="project__img" src="https://lottie.host/9356ecb4-f0f5-421a-a3d6-d8452431eedf/xaNtDpU013.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+                        <dotlottie-player class="project__img" src="https://lottie.host/9356ecb4-f0f5-421a-a3d6-d8452431eedf/xaNtDpU013.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
                     </div>
                 </div>
             </section>
-
-            
+       
             <!--==================== CONTACT ME ====================-->
             <section class="contact section" id="contact">
                 <h2 class="section__title">Contact me</h2>
@@ -620,27 +619,27 @@
 
                     </div>
 
-                    <form action="" class="contact__form grid">
+                    <form action="" id="contact-form" class="contact__form grid">
                         <div class="contact__inputs grid">
                             <div class="contact__content">
                                 <label for="#name" class="contact__label">Name :</label>
-                                <input type="text" id="name" class="contact__input">
+                                <input type="text" id="name" class="contact__input" required>
                             </div>
 
                             <div class="contact__content">
                                 <label for="#mail" class="contact__label">Email :</label>
-                                <input type="text" id="mail" class="contact__input">
+                                <input type="text" id="mail" class="contact__input" required>
                             </div>
 
                         </div>
                         <div class="contact__content">
                             <label for="#message" class="contact__label">Message :</label>
-                            <textarea name="" id="message" cols="0" rows="7" class="contact__input"></textarea>
+                            <textarea name="" id="message" cols="0" rows="7" class="contact__input" required></textarea>
                         </div>
                         <div>
-                            <a href="#" class="button button--flex">
-                            
-                            Send Message &nbsp;<i class="uil uil-message  button__icon"></i></a>
+                            <button type="submit" style="border: none;cursor: pointer;" id="email-btn" class="button button--flex">
+                                Send Message &nbsp;<i class="uil uil-message  button__icon"></i>
+                            </button>
 
                         </div>
                     </form>
@@ -678,7 +677,7 @@
                         <a href="https://www.linkedin.com/in/manikanta-swamy-angara-941117299/" target="_blank"><i class="uil uil-linkedin-alt footer__social"></i></a>
                         <a href="https://github.com/Manikanta-swamy/"  target="_blank"><i class="uil uil-github-alt footer__social"></i></a>
                         <a href="mailto:angaramanikantaswamy@gmail.com" target="_blank"><i class="uil uil-envelope-alt footer__social"></i></a>
-                        <a href="" target="_blank"><i class="uil uil-whatsapp"></i></a>
+                        <!-- <a href="" target="_blank"><i class="uil uil-whatsapp"></i></a> -->
                     </div>
 
                 </div>
@@ -694,5 +693,42 @@
 
         <script src="./assets/js/swiper-bundle.min.js"></script>
         <script src="./assets/js/main.js"></script>
+        <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+        <script>
+
+        emailjs.init("EzosNKoTRTMqbicSY");
+
+
+        document.getElementById('email-btn').addEventListener('click', function(event) 
+        {
+            event.preventDefault();
+            let name = document.querySelector("#name").value;
+            let mail = document.querySelector("#mail").value;
+            let msg = document.querySelector("#message").value;
+
+            let namecheck = (name !== null ) && (name.length >=1)
+            let mailcheck = (mail !== null ) && (mail.length >=1) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail);
+            let msgcheck = (msg !== null ) && (msg.length >=1)
+
+
+            if (namecheck && mailcheck && msgcheck)
+            {
+                // console.log(mailcheck)
+                emailjs.sendForm('service_lzvrql6', 'template_iy9vpm3', form)
+                .then(function(response) {
+                    alert('Email sent successfully!');
+                    console.log('Success:', response);
+                }, function(error) {
+                    alert('Failed to send email.');
+                    console.log('Error:', error);
+                });
+            }
+            else
+            {
+                alert("please fill all the inputs correctly!!")
+            }
+        });
+        </script>
+
     </body>
 </html>
