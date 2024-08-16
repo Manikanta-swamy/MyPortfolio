@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="assets/img/logo.jpg" style="border-radius: 50px;" type="image/x-icon">
 
 
-        <title>Responsive Portfolio Website</title>
+        <title>Manikanta's Portfolio</title>
     </head>
     <body>
         <!--==================== HEADER ====================-->
@@ -623,18 +623,18 @@
                         <div class="contact__inputs grid">
                             <div class="contact__content">
                                 <label for="#name" class="contact__label">Name :</label>
-                                <input type="text" id="name" class="contact__input" required>
+                                <input type="text" id="name" name="from_name" class="contact__input" required>
                             </div>
 
                             <div class="contact__content">
                                 <label for="#mail" class="contact__label">Email :</label>
-                                <input type="text" id="mail" class="contact__input" required>
+                                <input type="text" id="mail" name="from_mail" class="contact__input" required>
                             </div>
 
                         </div>
                         <div class="contact__content">
                             <label for="#message" class="contact__label">Message :</label>
-                            <textarea name="" id="message" cols="0" rows="7" class="contact__input" required></textarea>
+                            <textarea name="" id="message" cols="0" rows="7" name="message" class="contact__input" required></textarea>
                         </div>
                         <div>
                             <button type="submit" style="border: none;cursor: pointer;" id="email-btn" class="button button--flex">
@@ -710,6 +710,7 @@
             let mailcheck = (mail !== null ) && (mail.length >=1) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail);
             let msgcheck = (msg !== null ) && (msg.length >=1)
 
+            let form = document.querySelector("#contact-form");
 
             if (namecheck && mailcheck && msgcheck)
             {
