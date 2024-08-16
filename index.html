@@ -622,18 +622,18 @@
                     <form action="" id="contact-form" class="contact__form grid">
                         <div class="contact__inputs grid">
                             <div class="contact__content">
-                                <label for="#name" class="contact__label">Name :</label>
-                                <input type="text" id="name" name="from_name" class="contact__input" required>
+                                <label for="name" class="contact__label">Name :</label>
+                                <input type="text" id="name" name="name" class="contact__input" required>
                             </div>
 
                             <div class="contact__content">
-                                <label for="#mail" class="contact__label">Email :</label>
-                                <input type="text" id="mail" name="from_mail" class="contact__input" required>
+                                <label for="mail" class="contact__label">Email :</label>
+                                <input type="text" id="mail" name="mail" class="contact__input" required>
                             </div>
 
                         </div>
                         <div class="contact__content">
-                            <label for="#message" class="contact__label">Message :</label>
+                            <label for="message" class="contact__label">Message :</label>
                             <textarea name="" id="message" cols="0" rows="7" name="message" class="contact__input" required></textarea>
                         </div>
                         <div>
@@ -711,6 +711,7 @@
             let msgcheck = (msg !== null ) && (msg.length >=1)
 
             let form = document.querySelector("#contact-form");
+            console.log(form);
 
             if (namecheck && mailcheck && msgcheck)
             {
