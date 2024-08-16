@@ -710,6 +710,7 @@
             let mailcheck = (mail !== null ) && (mail.length >=1) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail);
             let msgcheck = (msg !== null ) && (msg.length >=1)
 
+            let form = document.querySelector("#contact-form");
 
             if (namecheck && mailcheck && msgcheck)
             {
