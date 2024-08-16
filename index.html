@@ -623,23 +623,23 @@
                         <div class="contact__inputs grid">
                             <div class="contact__content">
                                 <label for="#name" class="contact__label">Name :</label>
-                                <input type="text" id="name" class="contact__input">
+                                <input type="text" id="name" class="contact__input" required>
                             </div>
 
                             <div class="contact__content">
                                 <label for="#mail" class="contact__label">Email :</label>
-                                <input type="text" id="mail" class="contact__input">
+                                <input type="text" id="mail" class="contact__input" required>
                             </div>
 
                         </div>
                         <div class="contact__content">
                             <label for="#message" class="contact__label">Message :</label>
-                            <textarea name="" id="message" cols="0" rows="7" class="contact__input"></textarea>
+                            <textarea name="" id="message" cols="0" rows="7" class="contact__input" required></textarea>
                         </div>
                         <div>
-                            <a href="#" class="button button--flex">
-                            
-                            Send Message &nbsp;<i class="uil uil-message  button__icon"></i></a>
+                            <button type="submit" style="border: none;cursor: pointer;" id="email-btn" class="button button--flex">
+                                Send Message &nbsp;<i class="uil uil-message  button__icon"></i>
+                            </button>
 
                         </div>
                     </form>
@@ -698,19 +698,35 @@
 
         emailjs.init("EzosNKoTRTMqbicSY");
 
-        document.querySelector('.button.button--flex').addEventListener('click', function(event) {
-            event.preventDefault();
 
-            var form = document.querySelector('.contact__form');
-            
-            emailjs.sendForm('service_lzvrql6', 'template_iy9vpm3', form)
-            .then(function(response) {
-                alert('Email sent successfully!');
-                console.log('Success:', response);
-            }, function(error) {
-                alert('Failed to send email.');
-                console.log('Error:', error);
-            });
+        document.getElementById('email-btn').addEventListener('click', function(event) 
+        {
+            event.preventDefault();
+            let name = document.querySelector("#name").value;
+            let mail = document.querySelector("#mail").value;
+            let msg = document.querySelector("#message").value;
+
+            let namecheck = (name !== null ) && (name.length >=1)
+            let mailcheck = (mail !== null ) && (mail.length >=1) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail);
+            let msgcheck = (msg !== null ) && (msg.length >=1)
+
+
+            if (namecheck && mailcheck && msgcheck)
+            {
+                // console.log(mailcheck)
+                emailjs.sendForm('service_lzvrql6', 'template_iy9vpm3', form)
+                .then(function(response) {
+                    alert('Email sent successfully!');
+                    console.log('Success:', response);
+                }, function(error) {
+                    alert('Failed to send email.');
+                    console.log('Error:', error);
+                });
+            }
+            else
+            {
+                alert("please fill all the inputs correctly!!")
+            }
         });
         </script>
 
