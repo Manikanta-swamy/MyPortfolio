@@ -55,7 +55,7 @@ function toggleSkills()
         itemClass.add('skills__close');
     }
 
-    console.log(itemClass);
+    // console.log(itemClass);
 }
 skillsHeader.forEach((el) => {
     el.addEventListener('click', toggleSkills);
@@ -74,7 +74,7 @@ let modal = function(modalClick)
 modalBtns.forEach((btn,i)=>{
     btn.addEventListener("click",()=>{
         modal(i)
-        console.log("clicked")
+        // console.log("clicked")
     })
 })
 
@@ -131,5 +131,3 @@ function scrollHeader()
     }
 }
 window.addEventListener('scroll',scrollHeader);
-
-/*==================== DARK LIGHT THEME ====================*/ 
